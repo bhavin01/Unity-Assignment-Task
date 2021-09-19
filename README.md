@@ -1,2 +1,2 @@
-# KiksARTask
+# Unity Test
 Task 2
