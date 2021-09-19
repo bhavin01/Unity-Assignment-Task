@@ -1,0 +1,90 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+namespace KiksAR.Scripts
+{
+    public class SetSubCategories : MonoBehaviour
+    {
+        [SerializeField] private Transform[] _subCat;
+        [SerializeField] private string[] _watchSubCatMan, _clothSubCatMan, _jewellerySubCatMan;
+        [SerializeField] private string[] _watchSubCatWoman, _clothSubCatWoman, _jewellerySubCatWoman;
+        [SerializeField] private string[] _watchSubCatKids, _clothSubCatKids, _jewellerySubCatKids;
+
+        public void SetSubCategory(CATEGORIES category, GENDER gender)
+        {
+            for (int Index = 0; Index < _subCat.Length; Index++)
+            {
+                Text txtSubCat = _subCat[Index].GetComponentInChildren<Text>();
+                switch (category)
+                {
+                    case CATEGORIES.WATCHES:
+                        switch (gender)
+                        {
+                            case GENDER.MAN:
+                                SetText(txtSubCat,_watchSubCatMan[Index]);
+                                break;
+                            case GENDER.WOMAN:
+                                SetText(txtSubCat, _watchSubCatWoman[Index]);
+                                break;
+                            case GENDER.CHILDERN:
+                                SetText(txtSubCat, _watchSubCatKids[Index]);
+                                break;
+                        }
+                        break;
+                    case CATEGORIES.CLOTHS:
+                        switch (gender)
+                        {
+                            case GENDER.MAN:
+                                SetText(txtSubCat, _clothSubCatMan[Index]);
+                                break;
+                            case GENDER.WOMAN:
+                                SetText(txtSubCat, _clothSubCatWoman[Index]);
+                                break;
+                            case GENDER.CHILDERN:
+                                SetText(txtSubCat, _clothSubCatKids[Index]);
+                                break;
+                        }
+                        break;
+                    case CATEGORIES.JEWELLERY:
+                        switch (gender)
+                        {
+                            case GENDER.MAN:
+                                SetText(txtSubCat, _jewellerySubCatMan[Index]);
+                                break;
+                            case GENDER.WOMAN:
+                                SetText(txtSubCat, _jewellerySubCatWoman[Index]);
+                                break;
+                            case GENDER.CHILDERN:
+                                SetText(txtSubCat, _jewellerySubCatKids[Index]);
+                                break;
+                        }
+                        break;
+                }
+            }
+        }
+        private void SetText(Text txtText,string value)
+        {
+            txtText.text = string.Format("{0}", value);
+        }
+    }
+}
+
+
+public enum CATEGORIES
+{
+    WATCHES,
+    CLOTHS,
+    JEWELLERY
+}
+
+public enum GENDER
+{
+    NONE,
+    MAN,
+    WOMAN,
+    CHILDERN
+}
+
+
